@@ -1,0 +1,433 @@
+
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#5b4bdb" />
+  <meta name="description" content="2026 초등 교감 자격연수 일정·장소·평가·식단 종합안내" />
+  <title>2026 초등 교감 자격연수 종합안내</title>
+  <style>
+    :root{
+      --blue:#5b4bdb; --blue-dark:#30256f; --sky:#eeeaff; --bg:#f2f0ff; --card:#fff;
+      --text:#241f3f; --muted:#6e6888; --line:#ddd8f3; --soft:#faf9ff;
+      --pink:#fff4fa; --pink-line:#f4d6e8; --mint:#f1fbf6; --mint-line:#cfeee0;
+      --lav:#f6f0ff; --lav-line:#e4d7fb; --yellow:#fff8e8; --yellow-line:#f1dfb8;
+      --grey:#f2f4f7; --grey-line:#d9e0ea; --orange:#fff6e7; --orange-line:#f2d7aa;
+      --danger:#ef476f; --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{background:#eeeaff}
+    body{margin:0;color:var(--text);background:linear-gradient(180deg,#eeeaff 0%,#fbfaff 48%,#f2f0ff 100%);font-family:Pretendard,'Noto Sans KR','Apple SD Gothic Neo',system-ui,sans-serif;letter-spacing:-.025em}
+    button,a,input{font:inherit}
+    button{cursor:pointer}
+    .app{width:min(100%,560px);min-height:100dvh;margin:0 auto;padding:calc(16px + env(safe-area-inset-top)) 16px calc(92px + env(safe-area-inset-bottom))}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .eyebrow{margin:0 0 4px;color:var(--blue);font-weight:900;font-size:12px}
+    .topbar h1{margin:0;color:var(--blue-dark);font-size:27px;letter-spacing:-.065em}
+    .bell{width:46px;height:46px;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:0 6px 15px rgba(91,75,219,.14);font-size:20px}
+    .hero{position:relative;overflow:hidden;margin-top:16px;border-radius:22px;background:linear-gradient(135deg,#fff 0%,#eeeaff 100%);min-height:188px;padding:24px;box-shadow:0 10px 24px rgba(75,59,173,.11)}
+    .hero-copy{position:relative;z-index:1;max-width:78%}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:#ece9ff;color:var(--blue);font-weight:900;font-size:12px}
+    .hero h2{margin:12px 0 10px;color:var(--blue-dark);font-size:29px;line-height:1.13;letter-spacing:-.07em}
+    .hero p{margin:0;color:#50617e;font-weight:800;font-size:13px;line-height:1.55}
+    .orb{position:absolute;border-radius:50%;background:rgba(91,75,219,.18)}
+    .orb.a{right:-42px;bottom:-46px;width:170px;height:170px}
+    .orb.b{right:42px;top:22px;width:88px;height:88px;background:rgba(91,75,219,.25)}
+    .sparkle{position:absolute;right:48px;top:34px;color:var(--blue);font-size:36px;opacity:.55}
+    .source-note{margin:24px 8px 2px;padding:0;color:#7d7893;text-align:center;font-size:11px;line-height:1.65;word-break:keep-all}
+    .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:3px;margin:18px 0;padding:5px;border:1px solid var(--line);border-radius:17px;background:#fff;box-shadow:0 6px 18px rgba(75,59,173,.09)}
+    .tab{border:0;border-radius:12px;background:transparent;padding:14px 6px;color:#5f6c84;font-size:15px;font-weight:900}
+    .tab.active{background:var(--blue);color:#fff;box-shadow:0 6px 14px rgba(91,75,219,.28)}
+    .section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;margin:4px 3px 14px}
+    .kicker{margin:0 0 4px;color:var(--blue);font-size:12px;font-weight:900}
+    .section-head h2{margin:0;color:var(--blue-dark);font-size:27px;letter-spacing:-.06em}
+    .btn{border:1px solid #cfc8ff;border-radius:13px;background:#fff;color:var(--blue);padding:10px 12px;font-weight:900;font-size:13px;white-space:nowrap}
+    .date-chips{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;margin:0 -2px 12px;padding:2px}
+    .date-chips::-webkit-scrollbar{display:none}
+    .chip{flex:0 0 auto;border:1px solid var(--line);border-radius:13px;background:#fff;color:#65738f;padding:10px 11px;font-size:13px;font-weight:900}
+    .chip.active{border-color:var(--blue);background:var(--blue);color:#fff}
+    .day-summary{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 0 12px;padding:10px 12px;border:1px solid #ddd7ff;border-radius:14px;background:#faf9ff;color:#52627e;font-size:13px;font-weight:850}
+    .day-summary b{color:var(--blue-dark)}
+    .mode-badge{flex:0 0 auto;padding:5px 8px;border-radius:999px;background:#ece9ff;color:var(--blue);font-size:11px;font-weight:900}
+    .schedule-list{display:grid;gap:10px}
+    .lesson{width:100%;min-height:72px;display:grid;grid-template-columns:74px minmax(0,1fr);overflow:hidden;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 6px 14px rgba(77,65,145,.07);padding:0;text-align:left}
+    .lesson:active{transform:scale(.99)}
+    .lesson .time{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;background:#f6f4ff;color:#445674;font-size:12px;font-weight:850;line-height:1.3}
+    .lesson .time i{font-style:normal;color:#9aa7bb;font-size:9px}
+    .lesson-main{min-width:0;display:flex;align-items:center;justify-content:space-between;gap:8px;border-left:1px solid var(--line);padding:12px 11px}
+    .lesson-title{min-width:0;color:#13213b;font-size:15px;font-weight:850;line-height:1.36;letter-spacing:-.04em;overflow-wrap:anywhere}
+    .lesson-place{flex:0 0 auto;max-width:76px;text-align:right;color:#667790;font-size:10px;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+    .lesson-place:before{content:'⌖ ';color:var(--blue)}
+    .tag{display:inline-block;margin:0 0 5px;padding:3px 7px;border-radius:999px;background:#eeebff;color:var(--blue);font-size:10px;font-weight:900}
+    .lesson.tone0{background:var(--pink);border-color:var(--pink-line)}
+    .lesson.tone1{background:#f4f1ff;border-color:#ded7fb}
+    .lesson.tone2{background:var(--mint);border-color:var(--mint-line)}
+    .lesson.tone3{background:var(--lav);border-color:var(--lav-line)}
+    .lesson.tone4{background:var(--yellow);border-color:var(--yellow-line)}
+    .lesson.tone0 .time{background:#ffedf6;color:#8e6f80}.lesson.tone1 .time{background:#eeeaff;color:#716894}.lesson.tone2 .time{background:#ecf9f2;color:#628174}.lesson.tone3 .time{background:#f4efff;color:#776e91}.lesson.tone4 .time{background:#fff8e8;color:#897b57}
+    .lesson.tone0 .lesson-main{border-color:var(--pink-line)}.lesson.tone1 .lesson-main{border-color:#ded7fb}.lesson.tone2 .lesson-main{border-color:var(--mint-line)}.lesson.tone3 .lesson-main{border-color:var(--lav-line)}.lesson.tone4 .lesson-main{border-color:var(--yellow-line)}
+    .lesson.meal,.lesson.move,.lesson.event{box-shadow:none}
+    .lesson.meal{background:var(--grey);border-color:var(--grey-line)}.lesson.meal .time{background:#e7ebf0;color:#59677e}.lesson.meal .lesson-main{border-color:var(--grey-line)}
+    .lesson.move{background:var(--orange);border-color:var(--orange-line)}.lesson.move .time{background:#f9e8ca;color:#7d6742}.lesson.move .lesson-main{border-color:var(--orange-line)}
+    .lesson.event{background:#f8f9fb;border-color:#e1e6ee}.lesson.event .time{background:#edf0f4;color:#647187}.lesson.event .lesson-main{border-color:#e1e6ee}
+    .lesson.past{opacity:.43;filter:grayscale(.18)}
+    .lesson.now{background:var(--blue);border-color:var(--blue);box-shadow:0 8px 20px rgba(91,75,219,.28)}
+    .lesson.now .time{background:#4938bd;color:#fff}.lesson.now .time i{color:rgba(255,255,255,.78)}.lesson.now .lesson-main{border-color:rgba(255,255,255,.25)}.lesson.now .lesson-title,.lesson.now .lesson-place,.lesson.now .lesson-place:before{color:#fff}
+    .now-badge{display:inline-block;margin:0 0 5px;padding:3px 7px;border-radius:999px;background:#fff;color:var(--blue);font-size:10px;font-weight:900}
+    .hours-note{margin:12px 4px;color:#65748d;font-size:12px;line-height:1.5}.hours-note b{color:var(--blue-dark)}
+    .calendar-card{border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.92);overflow:hidden;box-shadow:0 8px 22px rgba(75,59,173,.09)}
+    .cal-top{display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #eeeaf8}
+    .cal-top h3{margin:0;color:var(--blue-dark);font-size:19px}
+    .cal-nav{width:36px;height:36px;border:0;border-radius:10px;background:#f0edff;color:var(--blue);font-size:20px;font-weight:900}.cal-nav:disabled{opacity:.25;cursor:default}
+    .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;padding:14px 12px 8px}
+    .dow{text-align:center;color:#65738e;font-size:11px;font-weight:900}.dow.sun,.day.sun{color:#e56b86}.dow.sat,.day.sat{color:#6652d9}
+    .day{position:relative;min-height:50px;border:1px solid transparent;border-radius:12px;background:transparent;color:#263650;font-size:15px;font-weight:800;display:flex;align-items:center;justify-content:center;padding:0}
+    .day.empty{visibility:hidden}.day.has{cursor:pointer}.day.has.tone0{background:var(--pink);border-color:var(--pink-line)}.day.has.tone1{background:#f1eeff;border-color:#d9d1fb}.day.has.tone2{background:var(--mint);border-color:var(--mint-line)}.day.has.tone3{background:var(--lav);border-color:var(--lav-line)}.day.has.tone4{background:var(--yellow);border-color:var(--yellow-line)}
+    .day.today{border:2px dashed var(--blue)}.day.selected{outline:3px solid var(--blue);outline-offset:-3px;color:var(--blue);background:#eeebff}.day .dot{position:absolute;bottom:7px;left:50%;width:4px;height:4px;border-radius:50%;background:currentColor;transform:translateX(-50%);opacity:.45}
+    .cal-help{margin:0;padding:0 16px 16px;color:#697891;font-size:12px;line-height:1.45}
+    .guide-grid{display:grid;gap:10px}.guide{display:flex;align-items:center;gap:13px;width:100%;padding:16px;border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:0 5px 14px rgba(75,59,173,.06);text-align:left}.guide-icon{width:42px;height:42px;display:grid;place-items:center;flex:0 0 auto;border-radius:13px;background:#efecff;font-size:20px}.guide-title{display:block;color:var(--blue-dark);font-size:15px;font-weight:900}.guide-sub{display:block;margin-top:3px;color:#72809a;font-size:12px;line-height:1.4}
+    .empty{padding:28px 16px;border:1px dashed #d4cef2;border-radius:16px;background:#fff;color:#71809a;text-align:center;font-size:13px;line-height:1.55}
+    .bottom{position:fixed;z-index:6;left:50%;bottom:0;width:min(100%,560px);transform:translateX(-50%);display:grid;grid-template-columns:repeat(3,1fr);padding:7px 16px calc(7px + env(safe-area-inset-bottom));border-top:1px solid var(--line);background:rgba(255,255,255,.95);backdrop-filter:blur(12px)}
+    .bottom button{border:0;background:transparent;color:#72809a;padding:5px 3px;font-weight:900;font-size:11px}.bottom button span{display:block;font-size:20px;line-height:1.1}.bottom button.active{color:var(--blue)}
+    dialog{width:min(calc(100% - 20px),540px);max-height:min(86dvh,780px);padding:0;border:0;border-radius:22px;box-shadow:0 20px 65px rgba(43,31,91,.28)}dialog::backdrop{background:rgba(38,28,79,.36);backdrop-filter:blur(2px)}
+    .modal-head{position:sticky;top:0;z-index:1;display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid #eeeaf6;background:#fff}.modal-title{margin:0;color:var(--blue-dark);font-size:20px;font-weight:900}.close{width:38px;height:38px;border:2px solid #111;border-radius:12px;background:#fff;font-size:22px;line-height:1}
+    .modal-body{padding:18px;color:#3f4d66;line-height:1.65}.modal-body p{margin:8px 0}.modal-body h3{margin:0 0 12px;color:var(--blue-dark);font-size:24px;letter-spacing:-.04em}.modal-body h4{margin:18px 0 8px;color:var(--blue);font-size:17px}.modal-body ul{padding-left:21px}.modal-label{display:inline-block;margin-bottom:8px;color:var(--blue);font-size:12px;font-weight:900}
+    .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0}.detail-grid div{padding:10px;border-radius:12px;background:#faf9ff}.detail-grid dt{color:#72809a;font-size:11px;font-weight:900}.detail-grid dd{margin:3px 0 0;color:#263754;font-size:14px;line-height:1.4;overflow-wrap:anywhere}
+    .info-card{border:1px solid #ded8ff;border-radius:15px;background:#faf9ff;padding:14px;margin:10px 0}.info-card h4{margin:0 0 8px;color:#4a38b5;font-size:17px}.info-card p{margin:5px 0;color:#4e5d76}
+    .table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}.table th,.table td{padding:10px 11px;border-bottom:1px solid #ebe7f5;text-align:left;font-size:13px}.table tr:last-child td{border-bottom:0}.table th{background:#f1efff;color:#50617e;font-size:12px;font-weight:900}.table td:last-child{text-align:right;color:var(--blue-dark);font-weight:850}
+    .meal-status{margin:0 0 12px;padding:10px 12px;border-radius:12px;background:#f5f8fc;color:#65748d;font-size:12px}.meal-status.ok{background:#eefaf3;color:#337251}.meal-status.err{background:#fff2f4;color:#a5485d}
+    .meal-section{margin:12px 0;padding:14px;border:1px solid var(--line);border-radius:14px;background:#fff}.meal-section h4{margin:0 0 8px;color:var(--blue-dark)}.meal-section ul{margin:0;padding-left:21px}
+    .allergy{margin-top:18px;padding-top:14px;border-top:1px solid #edf0f5}.allergy p{font-size:12px;color:#69758d;line-height:1.55}
+    .hidden{display:none!important}
+    @media (max-width:380px){.app{padding-left:12px;padding-right:12px}.hero{padding:21px}.hero h2{font-size:26px}.lesson{grid-template-columns:68px minmax(0,1fr)}.lesson-place{max-width:63px}.section-head h2{font-size:24px}}
+  </style>
+</head>
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div><p class="eyebrow">2026 초등 교감 자격연수</p><h1>연수 종합안내</h1></div>
+      <button class="bell" id="noticeBtn" aria-label="공지사항">🔔</button>
+    </header>
+
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="badge">자격연수</span>
+        <h2>2026 초등 교감<br>자격연수</h2>
+        <p>2026. 7. 16.(목) ~ 8. 7.(금)<br>16일 · 총 100시간</p>
+      </div>
+      <span class="orb a"></span><span class="orb b"></span><span class="sparkle">✦</span>
+    </section>
+
+    <nav class="tabs" aria-label="주요 메뉴">
+      <button class="tab active" data-view="today">오늘</button>
+      <button class="tab" data-view="all">전체 시간표</button>
+      <button class="tab" data-view="guide">안내</button>
+    </nav>
+
+    <section id="todayView" class="view">
+      <div class="section-head"><div><p class="kicker" id="statusText">다음 연수일</p><h2 id="dayTitle">시간표</h2></div><button class="btn" id="mealBtn">🍱 식단 보기</button></div>
+      <div class="date-chips" id="dateChips"></div>
+      <div class="day-summary" id="daySummary"></div>
+      <div class="schedule-list" id="todayList"></div>
+      <p class="hours-note" id="hoursNote"></p>
+    </section>
+
+    <section id="allView" class="view hidden">
+      <div class="section-head"><div><p class="kicker">전체 일정</p><h2>전체 시간표</h2></div></div>
+      <div class="calendar-card">
+        <div class="cal-top"><button class="cal-nav" id="prevMonth" type="button" aria-label="이전 달">‹</button><h3 id="calendarTitle">2026년 7월</h3><button class="cal-nav" id="nextMonth" type="button" aria-label="다음 달">›</button></div>
+        <div class="calendar" id="calendar"></div>
+        <p class="cal-help">색이 있는 날짜는 연수일입니다. 오늘은 점선, 선택한 날짜는 진한 테두리로 표시됩니다.</p>
+      </div>
+      <div style="height:14px"></div>
+      <div class="day-summary" id="allDaySummary"></div>
+      <div class="schedule-list" id="calendarList"></div>
+    </section>
+
+    <section id="guideView" class="view hidden">
+      <div class="section-head"><div><p class="kicker">연수 전반 안내</p><h2>안내</h2></div></div>
+      <div class="guide-grid" id="guideList"></div>
+    </section>
+
+    <p class="source-note">※ 「2026 초등 교감 자격연수 운영 계획」을 바탕으로 제작되었으며, 운영 상황에 따라 일정·강의실·강사 등이 변경될 수 있습니다.</p>
+  </main>
+
+  <nav class="bottom" aria-label="하단 메뉴">
+    <button class="active" data-view="today"><span>⌂</span>홈</button>
+    <button data-view="all"><span>▦</span>시간표</button>
+    <button data-view="guide"><span>ⓘ</span>안내</button>
+  </nav>
+
+  <dialog id="modal"><div class="modal-head"><h2 class="modal-title" id="modalTitle">안내</h2><button class="close" id="modalClose" aria-label="닫기">×</button></div><div class="modal-body" id="modalBody"></div></dialog>
+
+  <script>
+    const MEAL_API_URL = 'https://script.google.com/macros/s/AKfycbyK9NBVbkOHNwxlZBFpH6_Ac2uUzS3uSemEw4DFZNeDlIpllSoYHaUIElCZCvflcJ1L/exec';
+    const REFRESH_MS = 10 * 60 * 1000;
+    const ALLERGY = '01. 난류, 02. 우유, 03. 메밀, 04. 땅콩, 05. 대두, 06. 밀, 07. 고등어, 08. 게, 09. 새우, 10. 돼지고기, 11. 복숭아, 12. 토마토, 13. 아황산류, 14. 호두, 15. 닭고기, 16. 쇠고기, 17. 오징어, 18. 조개류(굴·전복·홍합 포함), 19. 잣';
+
+    const DAYS = [
+      {date:'2026-07-16', hours:6, mode:'대면', location:'충남교육청교육연수원', items:[
+        ['09:00','09:50','개강식','대강당','','행사','연수 개강 및 안내',[]],
+        ['10:00','11:50','365일 가슴 설레며 일하는 법','대강당','개그맨 고명환','강의','관리자로서의 긍정적 마인드셋과 동기 부여',['관리자로서 긍정적 마인드셋 함양','일과 삶에 활력을 더하는 동기 부여']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','13:50','여는 공연(하모니카 앙상블)','대강당','이한결 외','공연','행복한 시작을 위한 문화예술체험',[]],
+        ['14:00','15:50','AI가 생각하는 시대, 교육의 방향 탐색','대강당','대구교대 교수 이영호','강의','인공지능 시대 변화와 교육의 방향 탐색',['인공지능 시대 변화의 이해','시대 변화에 따른 교육의 방향']],
+        ['16:00','16:50','분임활동 1','승지관 201호','','분임','분임 구성 및 첫 분임활동',[]]
+      ]},
+      {date:'2026-07-20', hours:7, mode:'대면·초중등 분반', location:'충남교육청교육연수원', items:[
+        ['09:00','09:50','과제수행 1','개별 수행','','과제','개인별 과제 수행',[]],
+        ['10:00','11:50','교육정책과 사회 변화 읽기','승지관 301호','정책기획과 과장 이영주','강의','미래사회 변화와 충남교육 정책 이해',['미래사회 변화에 따른 충남교육 정책 이해']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','성범죄 예방·초기 대응 / 민주적 학교 조직과 갈등 관리','승지관 103호·102호','정대승 팀장 · 김주현 대표','분반 순환','초·중등 분반별 순환 운영 1차',['성범죄 예방과 초기 대응 및 고충 처리','민주적 학교문화 이해와 갈등관리 대화법 실습']],
+        ['15:00','16:50','민주적 학교 조직과 갈등 관리 / 성범죄 예방·초기 대응','승지관 102호·103호','김주현 대표 · 정대승 팀장','분반 순환','초·중등 분반별 순환 운영 2차',['분반별 운영 순서는 당일 안내를 확인하세요.']]
+      ]},
+      {date:'2026-07-21', hours:6, mode:'대면', location:'충남교육청교육연수원', items:[
+        ['09:00','11:50','교사 성장 지원을 위한 수업 코칭','승지관 201호','교수 손우정','강의·실습','교내 수업나눔 문화와 저경력 교사 코칭',['수업나눔 문화 조성 방안','저경력 교사 대상 교내 장학 및 코칭']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','13:50','건강 관리를 위한 오피스 스트레칭','승지관 201호','정부청사관리본부 강사 최용범','실습','신체 활력 증진과 스트레스 해소 사무실 체조',['신체 활력 증진','스트레스 해소 사무실 체조']],
+        ['14:00','15:50','교육활동 침해 예방 및 대응','승지관 201호','장학사 윤판원','강의','교육활동 보호 제도와 학교의 대응',['교권보호제도 이해','교육활동 침해 예방 및 대응']]
+      ]},
+      {date:'2026-07-22', hours:6, mode:'현장체험', location:'홍성 일원', items:[
+        ['09:00','09:50','분임활동 2','분임토의실','','분임','분임별 토의 및 보고서 작성',[]],
+        ['10:00','11:50','교사에서 교감으로 교육철학의 변화','승지관 201호','교육연수원 원장 오동석','강의','교감의 역할 변화와 교육철학 성찰',['바람직한 리더십 역량 강화','관리자의 교육철학 공유']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','13:50','현장체험 이동','홍성 일원','','이동','현장체험 장소로 이동',[]],
+        ['14:00','16:50','학교 현장 방문','홍동초·햇살배움터','홍동초 교사 김영기 · 햇살배움터 교사 송범진','현장체험','마을기반교육과정과 혁신학교 사례 탐방',['혁신학교 및 마을기반교육과정 사례','학교 특색교육과정 운영 사례']]
+      ]},
+      {date:'2026-07-23', hours:5, mode:'현장체험', location:'스플라스 리솜·진로융합교육원', items:[
+        ['09:00','11:50','교감의 마음 챙김과 회복탄력성 실습','스플라스 리솜 스페이스 A','욕구코칭연구소 소장 김성경','실습','자기 성찰과 스트레스 관리, 회복탄력성 강화',['감정 조절 기법','심리적 소진 예방 실습','자기 성찰과 스트레스 관리']],
+        ['12:00','12:50','점심','현장체험 장소','','식사','',[]],
+        ['13:00','13:50','현장체험 이동','진로융합교육원 이동','','이동','다음 연수 장소로 이동',[]],
+        ['14:00','15:50','초등 진로교육의 이해','충남교육청진로융합교육원','교육연구사 박소희','강의·체험','충남 진로교육 정책과 초등 진로교육의 중점',['충남 진로교육 정책의 이해','초등 진로교육의 중점']],
+        ['16:00','16:50','복귀 이동','이동','','이동','현장체험 종료 후 이동',[]]
+      ]},
+      {date:'2026-07-24', hours:6, mode:'실시간 비대면', location:'소속교(기관) 또는 자택', items:[
+        ['09:00','09:50','과제수행 2','개별 수행','','과제','개인별 과제 수행',[]],
+        ['10:00','11:50','안전한 학교 만들기','실시간 비대면','안전공제회 차장 김천학','화상강의','학교안전사고 유형과 대처 사례',['학교안전사고의 유형','학교안전사고 대처 사례']],
+        ['12:00','12:50','점심','개별 식사','','식사','',[]],
+        ['13:00','15:50','명화 속 숨은 이야기를 통한 다각적 시선과 소통','실시간 비대면','도슨트 한지원','화상강의','예술 작품의 입체적 감상과 객관적 안목 형성',['예술 작품의 입체적 감상','관점의 전환과 객관적 안목 형성']]
+      ]},
+      {date:'2026-07-27', hours:7, mode:'실시간 비대면', location:'소속교(기관) 또는 자택', items:[
+        ['09:00','09:50','과제수행 3','개별 수행','','과제','개인별 과제 수행',[]],
+        ['10:00','11:50','사례 중심 민원 예방과 대응','실시간 비대면','영훈초등학교 교장 김대권','화상강의','학교 민원 유형과 특이민원 단계별 대응',['학교 민원 종류 및 양상 이해','특이·악성 민원 단계별 대응 사례']],
+        ['12:00','12:50','점심','개별 식사','','식사','',[]],
+        ['13:00','14:50','위기학생의 이해와 지원','실시간 비대면','예산교육지원청 Wee센터 전문상담교사 김아람','화상강의','생명존중과 위기학생 관리 방안',['생명존중 및 자살 예방교육','위기학생 관리 방안']],
+        ['15:00','16:50','교육공무직원 인사 및 복무관리','실시간 비대면','충남교육청 노무사 이애림','화상강의','교육공무직 관련 법규와 관리 실제',['학교계약직 관련 법규','교육공무직 관리의 실제']]
+      ]},
+      {date:'2026-07-28', hours:6, mode:'대면', location:'충남교육청교육연수원', items:[
+        ['10:00','11:50','탄소중립, 학교를 디자인하다','승지관 301호','기후변화행동연구소 이사 김남수','강의','생태환경교육 정책과 학교 실천 사례',['생태환경교육 정책 이해','현장 적용 실천 사례 공유']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','13:50','분임활동 3','분임토의실','','분임','분임별 토의 및 보고서 작성',[]],
+        ['14:00','14:50','교원단체','연수원','','강의','교원단체 관련 연수',[]],
+        ['15:00','16:50','교육법규와 학교생활','승지관 301호','변호사 김의성','강의','교육 관련 법규의 이해와 학교 현장 적용',['교육 관련 법규의 이해','법규의 적용과 활용']]
+      ]},
+      {date:'2026-07-29', hours:7, mode:'대면', location:'충남교육청교육연수원', items:[
+        ['09:00','09:50','분임활동 4','분임토의실','','분임','분임별 토의 및 보고서 작성',[]],
+        ['10:00','11:50','문해력 향상을 위한 관리자의 역할','승지관 201호','해미초 교감 김동렬','강의','초등 문해력 향상 지원과 독서·인문교육 체계화',['초등 문해력 향상 지원 방안','교내 독서·인문교육 체계화']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','학교평가의 이해(서·논술형 평가 중심)','승지관 201호','다산한강초 교감 최혜란','강의','과정중심 및 서·논술형 평가 설계의 이해',['과정중심평가 이해','서·논술형 평가 설계']],
+        ['15:00','16:50','온돌봄정책 이해와 교감의 역할','승지관 201호','장학사 장옥선','강의','온돌봄 정책의 현장 안착과 실무 인력 협력',['늘봄학교 및 온돌봄 정책의 현장 안착','지원실장 등 실무 인력과의 협력 방안']]
+      ]},
+      {date:'2026-07-30', hours:6, mode:'대면', location:'충남교육청교육연수원', items:[
+        ['10:00','11:50','학교폭력 예방과 대응','승지관 201호','장학사 김국주','강의','학교폭력 사안 처리와 교감의 조율 역할',['학교폭력 사안 처리 절차 숙지','전담조사관제 도입 및 교감 조율 역할']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','청렴한 학교와 감사','승지관 201호','장학사 이규훈','강의','감사 관련 법규와 청렴한 학교문화',['감사 관련 교육 법규 이해','감사 사례를 통한 교육지원','청렴한 학교문화 만들기']],
+        ['15:00','16:50','교내 위원회 운영 실무','승지관 201호','군북초 교감 김지연','강의·실습','학교운영위원회와 인사자문위원회 운영 실무',['학교운영위원회 및 인사자문위원회 실무','각종 회의체 운영 행정 절차']]
+      ]},
+      {date:'2026-07-31', hours:5, mode:'대면·평가', location:'충남교육청교육연수원', items:[
+        ['10:00','10:50','논술평가','평가실','','평가','지필평가 논술형',[]],
+        ['11:00','11:50','분임활동 5','분임토의실','','분임','분임별 토의 및 보고서 작성',[]],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','15:50','교원인사 및 계약제 관리','승지관 202호','아산갈산초 교감 정지영','강의','교원 인사·복무와 계약제 교원 실무',['휴·복직 및 복무 업무','계약제 교원 실무']]
+      ]},
+      {date:'2026-08-03', hours:6, mode:'대면·분반 순환', location:'충남교육청교육연수원', items:[
+        ['10:00','11:50','관리자 이미지메이킹 / AI·디지털 기반 교감 업무 최적화','승지관 303호·302호','이민혜 교수 · 김근태 교감','분반 순환','분반별 순환 운영 1차',['관리자로서 외적 자기관리 능력 기르기','구글 시트·생성형 AI 활용 및 자료 분석 실습']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','AI·디지털 기반 교감 업무 최적화 / 관리자 이미지메이킹','승지관 302호·303호','김근태 교감 · 이민혜 교수','분반 순환','분반별 순환 운영 2차',['분반별 운영 순서는 당일 안내를 확인하세요.']],
+        ['15:00','16:50','유초이음교육의 이해','승지관 202호','공주대 교수 이성희','강의','전환기 학생의 안정적 적응과 교육과정 연계',['전환기 학생 안정적 적응 지원','유치원·초등 교육과정 연계 방안']]
+      ]},
+      {date:'2026-08-04', hours:6, mode:'대면', location:'충남교육청교육연수원', items:[
+        ['10:00','11:50','학교예산의 이해와 편성','승지관 202호','천안가람초 교장 남승경','강의','학교예산의 이해와 편성·관리',['학교예산의 이해','학교예산 편성과 관리']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','질문있는 학교 이해 및 운영','승지관 202호','이화여대 교수 옥현진','강의','질문있는 학교 사례와 수업혁신 문화 조성',['질문있는 학교 선도 사례','수업혁신 문화 조성 리더십']],
+        ['15:00','16:50','학부모를 내 편으로, 행복한 교육공동체 만들기','승지관 301호','전 교사 이우경','강의·실습','학부모와의 긍정적 관계와 민원 대응 소통',['학부모와의 긍정적 관계 형성','민원 대응 커뮤니케이션 실습']]
+      ]},
+      {date:'2026-08-05', hours:5, mode:'대면', location:'충남교육청교육연수원', items:[
+        ['10:00','11:50','학사운영과 학교 관리','승지관 202호','아산 공수초 교감 김정혜','강의','학사일정 통합 관리와 학교 운영',['학사일정 통합 관리']],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','학생맞춤형통합지원','승지관 202호','광석초 교장 김주현','강의','학생맞춤통합지원 정책과 학교 적용 사례',['학생맞춤통합지원 정책 이해','학교 현장 적용 사례']],
+        ['15:00','15:50','분임활동 6','분임토의실','','분임','분임별 토의 및 보고서 작성',[]]
+      ]},
+      {date:'2026-08-06', hours:5, mode:'대면·평가', location:'충남교육청교육연수원', items:[
+        ['10:00','10:50','서술평가','평가실','','평가','지필평가 서술형',[]],
+        ['11:00','11:50','분임활동 7','분임토의실','','분임','분임별 토의 및 보고서 작성',[]],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','선임 교감과의 대화','승지관 202호','초등 교감 전윤주 외 3인','토의·대화','교감의 역할과 학교문화, 리더십 경험 공유',['교감의 역할과 학교문화 공유','바람직한 리더십 사례 공유']],
+        ['15:00','15:50','분임활동 8','분임토의실','','분임','분임별 토의 및 보고서 작성',[]]
+      ]},
+      {date:'2026-08-07', hours:5, mode:'대면·수료', location:'충남교육청교육연수원', items:[
+        ['10:00','11:50','분임발표 9·10','승지관 202호','','발표','분임별 결과 발표',[]],
+        ['12:00','12:50','점심','연수원 식당','','식사','',[]],
+        ['13:00','14:50','행복한 교육자, 관리자로 살기','승지관 301호','전 원장 김준태','강의','행복한 교직 생활 설계와 교육자의 마음 다지기',['행복한 교직 생활 설계','교육자의 마음 다지기']],
+        ['15:00','15:50','공감과 격려의 하모니','승지관 301호','너울','공연','닫는 문화예술 공연',[]],
+        ['16:00','16:50','수료식','승지관 301호','','행사','수료식 및 설문조사',[]]
+      ]}
+    ].map((day,di)=>({...day,label:formatKDate(day.date),items:day.items.map((x,ii)=>({id:`${di}-${ii}`,start:x[0],end:x[1],title:x[2],location:x[3],speaker:x[4],type:x[5],detail:x[6],points:x[7]}))}));
+
+    const REMOTE_CONTENTS = [
+      ['디지털시민성의 이해','디지털 시민성의 의미와 교육의 방향','3000021312'],
+      ['이주배경학생 이해','다문화 사회로의 변화와 다문화 이해 교육의 중요성','3000021991'],
+      ['장애이해교육','장애이해교육 운영의 이해와 실제','1000123030'],
+      ['학생인권교육의 이해','사례로 보는 학생인권과 교권의 규범적 이해','1000126206'],
+      ['아동학대 신고의무자 교육','아동학대 예방 및 긴급복지신고','3000021857'],
+      ['긴급복지 신고의무 교육','긴급복지 신고의무 교육','3000021287']
+    ];
+
+    const state = {
+      selectedDate:'', calendarDate:'', calendarMonth:'2026-07', meals:{}, mealLoaded:false, mealError:'', mealUpdatedAt:''
+    };
+    const modal = document.querySelector('#modal');
+    const esc = (s='') => String(s).replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+    const timeToNum = (t='') => {const [h,m]=String(t).split(':').map(Number);return (h||0)*60+(m||0)};
+    const dayByDate = date => DAYS.find(d=>d.date===date);
+    const scheduleDates = () => DAYS.map(d=>d.date);
+
+    function formatKDate(date){
+      const [y,m,d]=date.split('-').map(Number); const yo=['일','월','화','수','목','금','토'][new Date(y,m-1,d).getDay()];
+      return `${m}.${d}(${yo})`;
+    }
+    function kstNow(){
+      const parts = new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date());
+      const obj={}; parts.forEach(p=>obj[p.type]=p.value);
+      return {date:`${obj.year}-${obj.month}-${obj.day}`,minutes:Number(obj.hour)*60+Number(obj.minute)};
+    }
+    function chooseInitialDate(){
+      const today=kstNow().date; return scheduleDates().find(d=>d>=today) || scheduleDates()[scheduleDates().length-1];
+    }
+    function statusOf(day,item){
+      const now=kstNow(); if(day.date<now.date)return 'past'; if(day.date>now.date)return 'future';
+      const st=timeToNum(item.start), en=timeToNum(item.end); if(now.minutes>=st&&now.minutes<=en)return 'now'; if(now.minutes>en)return 'past'; return 'future';
+    }
+    function typeClass(item){
+      if(item.type==='식사')return 'meal'; if(item.type==='이동')return 'move'; if(['행사','공연'].includes(item.type))return 'event'; return '';
+    }
+    function shortPlace(place=''){
+      return String(place).replace('충남교육청교육연수원','연수원').replace('충청남도교육청교육연수원','연수원').replace('실시간 비대면','비대면').replace('스플라스 리솜 스페이스 A','리솜 A');
+    }
+    function openModal(title,html){document.querySelector('#modalTitle').textContent=title;document.querySelector('#modalBody').innerHTML=html;modal.showModal()}
+    function rowHtml(day,item,index){
+      const st=statusOf(day,item), special=typeClass(item), tone=special?'':`tone${index%5}`, now=st==='now'&&item.type!=='식사';
+      const tag=item.type&&item.type!=='강의'?`<span class="tag">${esc(item.type)}</span>`:'';
+      return `<button class="lesson ${tone} ${special} ${now?'now':''} ${st==='past'?'past':''}" data-id="${item.id}"><span class="time"><b>${esc(item.start)}</b><i>~</i><b>${esc(item.end)}</b></span><span class="lesson-main"><span class="lesson-title">${now?'<span class="now-badge">진행 중</span>':''}${tag}${esc(item.title)}</span><span class="lesson-place">${esc(shortPlace(item.location))}</span></span></button>`;
+    }
+    function renderDateChips(){
+      const el=document.querySelector('#dateChips'); el.innerHTML=DAYS.map(d=>`<button class="chip ${state.selectedDate===d.date?'active':''}" data-date="${d.date}">${d.label}</button>`).join('');
+      el.querySelectorAll('[data-date]').forEach(b=>b.onclick=()=>{state.selectedDate=b.dataset.date;state.calendarDate=b.dataset.date;state.calendarMonth=b.dataset.date.slice(0,7);renderToday()});
+      requestAnimationFrame(()=>el.querySelector('.chip.active')?.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'}));
+    }
+    function summaryHtml(day){return `<span><b>${day.hours}시간</b> · ${esc(day.location)}</span><span class="mode-badge">${esc(day.mode)}</span>`}
+    function renderToday(){
+      if(!state.selectedDate)state.selectedDate=chooseInitialDate(); const day=dayByDate(state.selectedDate); if(!day)return;
+      const today=kstNow().date; document.querySelector('#statusText').textContent=day.date===today?'오늘 시간표':(day.date>today?'다음 연수일':'연수 일정');
+      document.querySelector('#dayTitle').textContent=`${day.label} 시간표`; renderDateChips(); document.querySelector('#daySummary').innerHTML=summaryHtml(day);
+      let count=0; document.querySelector('#todayList').innerHTML=day.items.map(item=>rowHtml(day,item,['식사','이동','행사','공연'].includes(item.type)?0:count++)).join('');
+      document.querySelector('#hoursNote').innerHTML=`<b>계획 시수 ${day.hours}시간</b> · 수업 카드를 누르면 강사·장소·교수요목을 볼 수 있습니다.`;
+    }
+    function monthInfo(month){const [y,m]=month.split('-').map(Number);return {y,m,days:new Date(y,m,0).getDate(),first:new Date(y,m-1,1).getDay()}}
+    function changeMonth(delta){const months=['2026-07','2026-08'];const i=months.indexOf(state.calendarMonth);const ni=Math.max(0,Math.min(months.length-1,i+delta));state.calendarMonth=months[ni];renderCalendar()}
+    function renderCalendar(){
+      const info=monthInfo(state.calendarMonth), today=kstNow().date, dates=new Set(scheduleDates()), ordered=scheduleDates();
+      document.querySelector('#calendarTitle').textContent=`${info.y}년 ${info.m}월`; document.querySelector('#prevMonth').disabled=state.calendarMonth==='2026-07';document.querySelector('#nextMonth').disabled=state.calendarMonth==='2026-08';
+      const dows=['일','월','화','수','목','금','토'];let html=dows.map((d,i)=>`<div class="dow ${i===0?'sun':''} ${i===6?'sat':''}">${d}</div>`).join('');
+      for(let i=0;i<info.first;i++)html+='<button class="day empty" aria-hidden="true"></button>';
+      for(let d=1;d<=info.days;d++){
+        const date=`${info.y}-${String(info.m).padStart(2,'0')}-${String(d).padStart(2,'0')}`,dow=new Date(info.y,info.m-1,d).getDay(),has=dates.has(date),tone=Math.max(0,ordered.indexOf(date))%5;
+        html+=`<button class="day ${dow===0?'sun':''} ${dow===6?'sat':''} ${has?`has tone${tone}`:''} ${date===today?'today':''} ${date===state.calendarDate?'selected':''}" ${has?`data-cal="${date}"`:''}>${d}${has?'<span class="dot"></span>':''}</button>`;
+      }
+      const cal=document.querySelector('#calendar');cal.innerHTML=html;cal.querySelectorAll('[data-cal]').forEach(b=>b.onclick=()=>{state.calendarDate=b.dataset.cal;state.selectedDate=b.dataset.cal;renderCalendar();renderCalendarList()});
+    }
+    function renderCalendarList(){
+      if(!state.calendarDate)state.calendarDate=state.selectedDate||chooseInitialDate();const day=dayByDate(state.calendarDate);if(!day)return;
+      document.querySelector('#allDaySummary').innerHTML=summaryHtml(day);let count=0;document.querySelector('#calendarList').innerHTML=day.items.map(item=>rowHtml(day,item,['식사','이동','행사','공연'].includes(item.type)?0:count++)).join('');
+    }
+    function findItem(id){for(const day of DAYS){const item=day.items.find(x=>x.id===id);if(item)return {day,item}}return null}
+    function showDetail(day,item){
+      if(item.type==='식사'){showMeal(day.date,'lunch');return}
+      const points=item.points?.length?`<h4>주요 내용</h4><ul>${item.points.map(p=>`<li>${esc(p)}</li>`).join('')}</ul>`:'';
+      openModal('수업 상세',`<span class="modal-label">${day.label} · ${esc(item.start)} ~ ${esc(item.end)}</span><h3>${esc(item.title)}</h3><dl class="detail-grid"><div><dt>장소</dt><dd>${esc(item.location||'-')}</dd></div><div><dt>강사</dt><dd>${esc(item.speaker||'-')}</dd></div><div><dt>연수 형태</dt><dd>${esc(item.type||'강의')}</dd></div><div><dt>일일 시수</dt><dd>${day.hours}시간</dd></div></dl>${item.detail?`<p>${esc(item.detail)}</p>`:''}${points}<p class="empty">※ 운영 상황에 따라 세부 일정·강의실·강사는 변경될 수 있습니다.</p>`);
+    }
+    function normalizeMenu(value){
+      if(Array.isArray(value))return value.map(String).map(x=>x.trim()).filter(Boolean);
+      if(value===null||value===undefined||value==='')return [];
+      return String(value).split(/\n|\r|,\s*/).map(x=>x.trim()).filter(Boolean);
+    }
+    function mealForDate(date){
+      const direct=state.meals?.[date];
+      if(direct)return direct;
+      const compact=String(date||'').replace(/\D/g,'');
+      for(const [key,value] of Object.entries(state.meals||{})){
+        const keyCompact=String(key).replace(/\D/g,'');
+        if(keyCompact===compact || keyCompact.endsWith(compact.slice(4)))return value;
+      }
+      return {};
+    }
+    function showMeal(date=state.selectedDate,preferred='lunch'){
+      const raw=mealForDate(date), labels={breakfast:'아침',lunch:'점심',dinner:'저녁'};
+      const order=[preferred,'breakfast','lunch','dinner'].filter((v,i,a)=>a.indexOf(v)===i);
+      let sections=order.map(type=>[type,normalizeMenu(raw?.[type])]).filter(([,menu])=>menu.length).map(([type,menu])=>`<section class="meal-section"><h4>${labels[type]||type}</h4><ul>${menu.map(m=>`<li>${esc(m)}</li>`).join('')}</ul></section>`).join('');
+      if(!sections && (Array.isArray(raw)||typeof raw==='string')){
+        const menu=normalizeMenu(raw); if(menu.length)sections=`<section class="meal-section"><ul>${menu.map(m=>`<li>${esc(m)}</li>`).join('')}</ul></section>`;
+      }
+      const emptyMessage=state.mealLoaded
+        ? '<p class="empty">등록된 식단이 없습니다.</p>'
+        : '<p class="empty">식단 정보를 확인하지 못했습니다.<br>잠시 후 다시 확인해 주세요.</p>';
+      openModal(`${formatKDate(date)} 식단`,`<h3>오늘의 식단</h3>${sections||emptyMessage}<section class="allergy"><h4>알레르기 정보</h4><p>${ALLERGY}</p></section>`);
+    }
+    function renderGuide(){
+      const guides=[
+        ['overview','📘','연수 개요','기간·대상·총 100시간'],
+        ['method','🗂️','연수 형태','원격 6 · 집합 91 · 과제 3시간'],
+        ['place','📍','연수 장소','연수원·현장체험·원격 장소'],
+        ['remote','💻','원격 콘텐츠','연수 기간 중 6개 과정 이수'],
+        ['evaluation','📝','평가 안내','서술·논술·과제·보고서·근태']
+      ];
+      document.querySelector('#guideList').innerHTML=guides.map(([k,i,t,s])=>`<button class="guide" data-guide="${k}"><span class="guide-icon">${i}</span><span><span class="guide-title">${t}</span><span class="guide-sub">${s}</span></span></button>`).join('');
+      document.querySelectorAll('[data-guide]').forEach(b=>b.onclick=()=>showGuide(b.dataset.guide));
+    }
+    function showGuide(key){
+      if(key==='overview')return openModal('연수 개요',`<span class="modal-label">2026 초등 교감 자격연수</span><h3>연수 개요</h3><section class="info-card"><p><b>기간</b> · 2026. 7. 16.(목)~8. 7.(금), 16일</p><p><b>대상</b> · 2026 초등 교감 자격연수 대상자 76명</p><p><b>총시수</b> · 100시간</p><p><b>형태</b> · 혼합연수</p></section><p>성찰, 리더십, 교무 운영, 교육 지원, 업무조정 및 갈등관리 역량 함양을 목표로 합니다.</p>`);
+      if(key==='method')return openModal('연수 형태',`<h3>총 100시간</h3><table class="table"><thead><tr><th>형태</th><th>시간</th></tr></thead><tbody><tr><td>원격 콘텐츠</td><td>6시간</td></tr><tr><td>집합연수</td><td>91시간</td></tr><tr><td>└ 실시간 비대면</td><td>11시간</td></tr><tr><td>└ 대면</td><td>80시간</td></tr><tr><td>과제수행</td><td>3시간</td></tr><tr><td><b>합계</b></td><td><b>100시간</b></td></tr></tbody></table><p class="empty">일자별 시간표 94시간과 원격 콘텐츠 6시간을 합해 총 100시간입니다.</p>`);
+      if(key==='place')return openModal('연수 장소',`<h3>주요 장소</h3><section class="info-card"><h4>집합연수</h4><p>충남교육청교육연수원 대강당, 승지관 201·301호, 지능정보연수실, 분임토의실 등</p></section><section class="info-card"><h4>현장체험연수</h4><p>홍성 일원: 홍동초, 햇살배움터, 진로융합교육원, 스플라스 리솜 등</p></section><section class="info-card"><h4>원격연수</h4><p>소속교(기관) 또는 자택</p></section>`);
+      if(key==='remote')return openModal('원격 콘텐츠',`<span class="modal-label">연수 기간 중 · 총 6시간</span><h3>원격연수 콘텐츠</h3><table class="table"><thead><tr><th>과목</th><th>차시</th></tr></thead><tbody>${REMOTE_CONTENTS.map(([t,c,code])=>`<tr><td><b>${esc(t)}</b><br><span style="color:#71809a;font-size:11px">${esc(c)} · ${esc(code)}</span></td><td>1</td></tr>`).join('')}</tbody></table>`);
+      if(key==='evaluation')return openModal('평가 안내',`<h3>평가계획</h3><table class="table"><thead><tr><th>평가</th><th>배점</th></tr></thead><tbody><tr><td>서술형 평가</td><td>50점</td></tr><tr><td>논술평가</td><td>20점</td></tr><tr><td>개별 과제물</td><td>10점</td></tr><tr><td>개별 보고서</td><td>10점</td></tr><tr><td>근태평가</td><td>10점</td></tr><tr><td><b>합계</b></td><td><b>100점</b></td></tr></tbody></table><p>가산점은 평가관리 규정에 따라 0.5~1.0점이 적용될 수 있습니다.</p>`);
+    }
+    function showNotices(){
+      openModal('공지사항',`<span class="modal-label">필독</span><h3>연수 전·중 확인 사항</h3><ul><li>본 안내는 운영계획을 바탕으로 제작되어 실제 운영 시 변경될 수 있습니다.</li><li>7.22.(수)~7.23.(목)은 현장체험연수입니다.</li><li>7.24.(금), 7.27.(월)은 실시간 비대면 연수입니다.</li><li>7.31.(금)은 논술평가, 8.6.(목)은 서술평가가 예정되어 있습니다.</li><li>원격 콘텐츠 6시간은 연수 기간 중 별도로 이수합니다.</li></ul>`);
+    }
+    function switchView(view){
+      document.querySelectorAll('.view').forEach(v=>v.classList.add('hidden'));document.querySelector(`#${view}View`).classList.remove('hidden');document.querySelectorAll('[data-view]').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+      if(view==='all'){if(!state.calendarDate)state.calendarDate=state.selectedDate||chooseInitialDate();state.calendarMonth=state.calendarDate.slice(0,7);renderCalendar();renderCalendarList()}if(view==='guide')renderGuide();window.scrollTo({top:0,behavior:'smooth'});
+    }
+    function loadMeals(){
+      const callbackName=`receiveMealData_${Date.now()}`,script=document.createElement('script');let done=false;
+      const cleanup=()=>{if(done)return;done=true;delete window[callbackName];script.remove()};
+      const timer=setTimeout(()=>{state.mealError='응답 시간 초과';state.mealLoaded=false;cleanup()},10000);
+      window[callbackName]=(data)=>{clearTimeout(timer);const payload=data&&typeof data==='object'?data:{};state.meals=payload.meals||payload.meal||{};state.mealLoaded=payload.ok!==false&&Object.keys(state.meals||{}).length>0;state.mealError=state.mealLoaded?'':(payload.error||'식단 데이터 없음');state.mealUpdatedAt=payload.updatedAt||'';cleanup()};
+      script.onerror=()=>{clearTimeout(timer);state.mealLoaded=false;state.mealError='데이터 요청 실패';cleanup()};
+      script.src=`${MEAL_API_URL}?callback=${callbackName}&t=${Date.now()}`;document.head.appendChild(script);
+    }
+
+    document.addEventListener('click',e=>{const row=e.target.closest('[data-id]');if(row){const found=findItem(row.dataset.id);if(found)showDetail(found.day,found.item)}});
+    document.querySelectorAll('[data-view]').forEach(b=>b.onclick=()=>switchView(b.dataset.view));
+    document.querySelector('#mealBtn').onclick=()=>showMeal(state.selectedDate||chooseInitialDate(),'lunch');
+    document.querySelector('#noticeBtn').onclick=showNotices;
+    document.querySelector('#modalClose').onclick=()=>modal.close();
+    modal.addEventListener('click',e=>{if(e.target===modal)modal.close()});
+    document.querySelector('#prevMonth').onclick=()=>changeMonth(-1);document.querySelector('#nextMonth').onclick=()=>changeMonth(1);
+
+    state.selectedDate=chooseInitialDate();state.calendarDate=state.selectedDate;state.calendarMonth=state.selectedDate.slice(0,7);
+    renderToday();renderCalendar();renderCalendarList();renderGuide();loadMeals();setInterval(loadMeals,REFRESH_MS);
+  </script>
+</body>
+</html>
